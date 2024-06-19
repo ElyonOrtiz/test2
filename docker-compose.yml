@@ -5,7 +5,7 @@ services:
     ports:
       - "3000:3000"
     environment:
-      DATABASE_URL: mysql://root:example_password@mysql:3306/bezkoder_db
+      DATABASE_URL: mysql://root:example_password@mysql:3307/bezkoder_db
     
     depends_on:
       - mysql
@@ -21,7 +21,6 @@ services:
       - "3307:3306"
     volumes:
       - mysql_data:/var/lib/mysql
-
 volumes:
   mysql_data:
     driver: local
