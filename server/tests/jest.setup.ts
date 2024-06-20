@@ -1,6 +1,6 @@
 import supertest from 'supertest';
 import { server } from '../src/server/Server';
-import { Knex } from '../src/server/database/knex';
+import { Knex } from '../server/src/server/database/knex';
 
 
 beforeAll(async () => {

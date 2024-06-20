@@ -1,4 +1,4 @@
-import { ClientInterface } from './../../controllers/interfaces/clients';
+import { ClientInterface } from '../../controllers/interfaces/clients';
 
 import { prisma } from '../../prisma/client';
 
