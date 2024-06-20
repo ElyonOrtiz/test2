@@ -1,12 +1,21 @@
 services:
+  client:
+    build: ./frontend
+    container_name: client
+    ports:
+      - "3000:3000"
+    environment:
+      NEXT_PUBLIC_API_BASE_URL: /api
+    depends_on:
+      - server 
+
   server:
     build: ./server
     container_name: server
     ports:
-      - "3000:3000"
+      - "3001:3000"
     environment:
-      DATABASE_URL: mysql://root:example_password@mysql:3307/bezkoder_db
-    
+      DATABASE_URL: mysql://root:example_password@mysql:3307/bezkoder_db  # Replace with your actual credentials
     depends_on:
       - mysql
 

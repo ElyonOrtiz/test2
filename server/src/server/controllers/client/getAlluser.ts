@@ -7,6 +7,8 @@ export class GetAllClientsController {
         try {
             const getAllClients = new GetAllClients()
             const result = await getAllClients.execute()
+
+            return res.status(StatusCodes.OK).json(result)
         } catch (error) {
             res.status(StatusCodes.BAD_REQUEST).send(error)
         }
