@@ -1,3 +1,4 @@
+'use client'
 import Link from "next/link"
 import { CircleUser, Menu, Package2, Search } from "lucide-react"
 
@@ -20,6 +21,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { logout } from "@/api/functions/logout"
 
 export default function Layout({
   children,
@@ -114,7 +116,7 @@ export default function Layout({
               <DropdownMenuLabel>My Account</DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuItem>Settings</DropdownMenuItem>
-              <DropdownMenuItem><Link href="/">Logout</Link></DropdownMenuItem>
+              <DropdownMenuItem><Link href="/" onClick={()=>{logout()}}>Logout</Link></DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>

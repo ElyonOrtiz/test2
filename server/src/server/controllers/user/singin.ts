@@ -32,7 +32,7 @@ export class SingInController {
          })
       }else{
         const  accessToken = JWTService.singn({uid: user.id})
-        if(accessToken === 'JWT_SECRET_NOT_FOUND'){
+        if (accessToken === 'JWT_SECRET_NOT_FOUND') {
           return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
             errors: {
               default: 'Erro ao gerrar token de acesso'

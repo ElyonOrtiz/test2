@@ -17,5 +17,5 @@ export default function middleware (request: NextRequest){
 }
 
 export const config = {
-  matcher:['/', '/(private)/:path*',]
+  matcher:['/', '/dashboard/:path*', '/settings/:path*']
 }
