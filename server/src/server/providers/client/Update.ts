@@ -1,3 +1,4 @@
+import { Clients } from '@prisma/client';
 import { ClientInterface } from '../../controllers/interfaces/clients';
 
 import { prisma } from '../../prisma/client';
@@ -6,7 +7,8 @@ import { prisma } from '../../prisma/client';
 
 
 export class UpdateClientById {
-  async execute(id:number, client:ClientInterface ): Promise< void | Error > {
+  async execute(id: number, client: ClientInterface): Promise<Clients | Error> {
+    console.log(id)
     try {
       const result = await prisma.clients.update({
         where: {
@@ -14,11 +16,10 @@ export class UpdateClientById {
         },
         data: client,
       })
-      if (result) return
-      
-      return new Error ('Erro ao atualizar registro')
+      return result      
     } catch (error) {
-      return new Error ('Erro ao atualizar registro')
+       console.error("Erro ao atualizar registro:", error);
+      return new Error('Erro ao atualizar registro');
     }
   }
 }

@@ -1,52 +1,60 @@
+'use client';
 import { Input } from "@/components/ui/input";
-import { Search } from "lucide-react";
-import {
-  Table,
-  TableBody,
-  TableCaption,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table"
 
+import { Label } from "@radix-ui/react-label";
+import { Button } from "@/components/ui/button";
+import DataTable from "@/components/data-tabele/dataTable";
+import { api } from "@/api/api";
+import { useState } from "react";
 
 export default function Page() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+
+  const handleSubmit = async (event: any) => {
+    event.preventDefault();
+    const data = {
+      email,
+      name,
+    }
+    try {
+      const res = await api.post('/client', data);
+      console.log("Novo cliente criado:", res.data);
+
+      
+      setName("");
+      setEmail("");
+      window.location.reload();
+    } catch (error) {
+      console.error("Erro ao criar novo cliente:", error);
+    }
+  };
+
   return (
-    <div className="flex bg-gray-100 h-full p-4 w-full justify-center">
-      <div className="flex-col gap-2 px-20 py-10 flex h-max justify-center bg-white border rounded-sm border-gray-300">
-        <div className="relative">
-          <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-          <Input
-            type="search"
-            placeholder="clientes..."
-            className="pl-8 sm:w-[300px] md:w-[200px] lg:w-[300px]"
-                  />
-        </div>          
-          <Table>
-            <TableCaption>Lista de clientes.</TableCaption>
-            <TableHeader>
-              <TableRow>
-                <TableHead>Nome</TableHead>
-                <TableHead>email</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              <TableRow>
-                <TableCell>Elyon</TableCell>
-                <TableCell>elyon.ortiz08@gmail.com</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell>Elyon</TableCell>
-                <TableCell>elyon.ortiz08@gmail.com</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell>Elyon</TableCell>
-                <TableCell>elyon.ortiz08@gmail.com</TableCell>
-              </TableRow>
-            </TableBody>
-          </Table>
-      </div>
+    <div className="flex h-full gap-8 bg-gray-100 p-4 w-full justify-center">
+      <form onSubmit={handleSubmit} className="flex-col gap-2 px-20 py-10 flex h-max justify-center bg-white border rounded-sm border-gray-300">
+        <h1 className="text-2xl font-bold text-gray-500">Adicionar cliente</h1>
+        <Label htmlFor="name">Nome</Label>
+        <Input
+          id="name"
+          type="text"
+          placeholder="Exemplo de Nome"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
+        />
+        <Label htmlFor="email">Email</Label>
+        <Input
+          id="email"
+          type="email"
+          placeholder="m@example.com"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+        <Button type="submit">Criar</Button>
+      </form>
+      <DataTable />
     </div>
   );
 }

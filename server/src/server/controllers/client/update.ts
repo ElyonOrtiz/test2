@@ -7,10 +7,11 @@ import { updateByIdValidation } from '../../validations/user';
 
 export class UpdateClientController {
     async handle(req: Request, res: Response) {
-        try {
+      try {
+          console.log(req.body)
       const client: ClientInterface = req.body;
-      const id = req.params
-      await updateByIdValidation.parse(req.params)
+        const id = parseInt(req.params.id)
+        console.log(id)
       if(!req.params){
         res.status(StatusCodes.BAD_REQUEST).json({
           errors:{
@@ -19,7 +20,7 @@ export class UpdateClientController {
         })
       }
       const updateClientById = new UpdateClientById()
-      const result = await updateClientById.execute(Number(id), client)
+      const result = await updateClientById.execute(id, client)
       res.status(StatusCodes.OK).json(result) 
     } catch (error) {
       res.status(StatusCodes.BAD_REQUEST).send(error)
