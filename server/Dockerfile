@@ -30,6 +30,7 @@ ENV SECRET_KEY=$SECRET_KEY
 # Generate Prisma client
 RUN npx prisma generate
 
+RUN npx prisma migrate deploy
 # Script to wait for MySQL and then apply migrations
 CMD /usr/wait-for-it.sh mysql:3307 -- npx prisma db seed
 
