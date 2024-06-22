@@ -14,7 +14,7 @@ export class getByEmail {
     if (result) return result
     return new Error('Email ou senha invalidos, tente novamente ou cadastre-se')
     } catch (error) {
-      return new Error('Não foi possivel se conectar com o banco de dados') 
+      return new Error('Não foi possivel se conectar com o banco de dados' + error.message) 
     }  
   }
 }

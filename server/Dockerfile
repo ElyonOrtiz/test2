@@ -7,7 +7,7 @@ RUN apk add --no-cache wget
 
 WORKDIR /app
 
-COPY package.json package-lock.json ./
+COPY package.json package-lock.json .env ./
 
 RUN npm install
 
@@ -17,7 +17,7 @@ COPY . .
 RUN wget -O /usr/wait-for-it.sh https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh
 RUN chmod +x /usr/wait-for-it.sh
 
-# Set DATABASE_URL during build phase
+# Set environment variables
 ARG DATABASE_URL
 ENV DATABASE_URL=$DATABASE_URL
 ARG JWT_SECRET
@@ -28,10 +28,13 @@ ARG SECRET_KEY
 ENV SECRET_KEY=$SECRET_KEY
 
 # Generate Prisma client
-RUN npx prisma generate
+RUN npx prisma generate --schema=./prisma/schema.prisma  # Especifica explicitamente o schema
 
-RUN npx prisma migrate deploy
-# Script to wait for MySQL and then apply migrations
-CMD /usr/wait-for-it.sh mysql:3307 -- npx prisma db seed
+# Copy entrypoint script
+COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
 
-EXPOSE 3000
+EXPOSE 3001
+
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
+CMD ["npm", "run", "dev"]
