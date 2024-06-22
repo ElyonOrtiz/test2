@@ -1,11 +1,14 @@
 services:
   client:
-    build: ./frontend
+    build:
+      context: ./frontend
+      args: 
+        NEXT_PUBLIC_API_BASE_URL: /server
     container_name: client
     ports:
       - "3000:3000"
     environment:
-      NEXT_PUBLIC_API_BASE_URL: /api
+      NEXT_PUBLIC_API_BASE_URL: /server
     depends_on:
       - server
 
@@ -16,12 +19,11 @@ services:
         DATABASE_URL: mysql://root:example_password@mysql:3307/bezkoder_db
     container_name: server
     ports:
-      - "3001:3000"
+      - "3001:3001"
     environment:
       DATABASE_URL: mysql://root:example_password@mysql:3307/bezkoder_db
-      JWT_SECRET: 'fvaGFIUDEWgwti974tglow24cdxsghnjmkrasetgzryr7x6ruyn5htbevs4y5ew'
-      FRONT_END: 'http://localhost:3000/'
-      SECRET_KEY: '5feFV0nZSglXiFJj'
+      JWT_SECRET: "fvaGFIUDEWgwti974tglow24cdxsghnjmkrasetgzryr7x6ruyn5htbevs4y5ew"
+      SECRET_KEY: "5feFV0nZSglXiFJj"
     depends_on:
       - mysql
 

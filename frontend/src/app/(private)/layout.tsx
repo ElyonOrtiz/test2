@@ -21,13 +21,16 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { logout } from "@/api/functions/logout"
+import { Logout } from "@/function"
 
 export default function Layout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+    const handleLogout = () => {
+    Logout();
+  };
   return (
     <div className="flex h-full w-full flex-col">
       <header className="sticky top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6">
@@ -116,7 +119,7 @@ export default function Layout({
               <DropdownMenuLabel>My Account</DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuItem>Settings</DropdownMenuItem>
-              <DropdownMenuItem><Link href="/" onClick={()=>{logout()}}>Logout</Link></DropdownMenuItem>
+              <DropdownMenuItem><Link href="/" onClick={handleLogout}>Logout</Link></DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>

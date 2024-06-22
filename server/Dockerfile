@@ -20,9 +20,12 @@ RUN chmod +x /usr/wait-for-it.sh
 # Set DATABASE_URL during build phase
 ARG DATABASE_URL
 ENV DATABASE_URL=$DATABASE_URL
-ENV JWT_SECRET='fvaGFIUDEWgwti974tglow24cdxsghnjmkrasetgzryr7x6ruyn5htbevs4y5ew'
-ENV FRONT_END="http://localhost:3000/"
-ENV SECRET_KEY="5feFV0nZSglXiFJj"
+ARG JWT_SECRET
+ENV JWT_SECRET=$JWT_SECRET
+ARG FRONT_END
+ENV FRONT_END=$FRONT_END
+ARG SECRET_KEY
+ENV SECRET_KEY=$SECRET_KEY
 
 # Generate Prisma client
 RUN npx prisma generate
