@@ -10,19 +10,18 @@ no seu terminal será mostrado os Logs fique atento pois o container client most
 exemplo:
 ![alt text](readme2024-06-24_11-25.png)
 
-A imagem mostra a url da aplicação
+A imagem acmia mostra onde é gerado o log da url da aplicação
 Para acessar o sistema é necessário entrar com:
-email:
-admin@admin.com
-password:
-admin
 
-O backend possui alguns teste de rotas com jest:
-que são divididas em 
+    email:
+    admin@admin.com
+    senha:
+    admin
 
-/user
-/client
+Apenas a rota de singin não possui verificação de autenticação as demais rotas do crud precisam de um token de acesso retornado pelo própio singin
 
-apenas a rota de singin não possui verificação de auteniticação o restante das rotas do crud precisam de um token de acesso retornado pelo própio singin
 
-O projeto foi dividido em client e sever, o Banco é um container mysql. A parte client foi contruída com next14, e o server em nodejs com Prisma ORM. tanto server quando o client foi ultilizado typescript.
+O projeto foi dividido em client e sever, o Banco é um container mysql. A parte client foi construida com next14, e o server em nodejs com Prisma ORM. tanto server quando no client foi ultilizado typescript.
+
+a biblioteca ui de frontend ultilizado foi o shadcn ui. 
+

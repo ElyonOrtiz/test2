@@ -31,8 +31,8 @@ export default function Page() {
   };
 
   return (
-    <div className="flex h-full gap-8 bg-gray-100 p-4 w-full justify-center">
-      <form onSubmit={handleSubmit} className="flex-col gap-2 px-20 py-10 flex h-max justify-center bg-white border rounded-sm border-gray-300">
+    <div className="md:flex md:space-y-0 block h-full gap-8 space-y-8 bg-gray-100 p-4 w-full justify-center">
+      <form onSubmit={handleSubmit} className="flex-col gap-2 md:px-20 md:py-10 px-4 py-4 flex h-max justify-center bg-white border rounded-sm border-gray-300">
         <h1 className="text-2xl font-bold text-gray-500">Adicionar cliente</h1>
         <Label htmlFor="name">Nome</Label>
         <Input

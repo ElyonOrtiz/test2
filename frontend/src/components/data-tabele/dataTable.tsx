@@ -178,11 +178,11 @@ export default function DataTable() {
   });
 
   return (
-    <div className="flex flex-col bg-white px-20 py-10 rounded-sm border border-gray-300 ">
+    <div className="flex flex-col bg-white md:px-20 md:py-10 px-4 py-4 rounded-sm border border-gray-300 ">
       <h1 className="text-2xl font-bold text-gray-500">Lista de clientes</h1>
       <div className="flex items-center py-4">
         <Input
-          placeholder="Filter emails..."
+          placeholder="Filtre por email"
           value={(table.getColumn("email")?.getFilterValue() as string) ?? ""}
           onChange={(event) =>
             table.getColumn("email")?.setFilterValue(event.target.value)
@@ -192,7 +192,7 @@ export default function DataTable() {
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="outline" className="ml-auto">
-              Columns <ChevronDown className="ml-2 h-4 w-4" />
+              Colunas <ChevronDown className="ml-2 h-4 w-4" />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">

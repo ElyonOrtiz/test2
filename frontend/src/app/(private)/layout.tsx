@@ -29,7 +29,7 @@ export default function Layout({
   }
   return (
     <div className="flex h-full w-full flex-col">
-      <header className="sticky top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6">
+      <header className="flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6">
         <nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
           <Link
             href="#"
@@ -39,16 +39,10 @@ export default function Layout({
             <span className="sr-only">Acme Inc</span>
           </Link>
           <Link
-            href="/dashboard"
+            href="/clientes"
             className="text-muted-foreground transition-colors hover:text-foreground"
           >
-            Dashboard
-          </Link>
-          <Link
-            href="/settings"
-            className="text-muted-foreground transition-colors hover:text-foreground"
-          >
-            Settings
+            Clientes
           </Link>
         </nav>
         <Sheet>
@@ -75,7 +69,7 @@ export default function Layout({
                 href="#"
                 className="text-muted-foreground hover:text-foreground"
               >
-                Dashboard
+                Clientes
               </Link>
               <Link
                 href="#"
@@ -112,10 +106,11 @@ export default function Layout({
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-              <DropdownMenuLabel>My Account</DropdownMenuLabel>
+              <DropdownMenuLabel>Minha conta</DropdownMenuLabel>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>Settings</DropdownMenuItem>
-              <DropdownMenuItem><Link href="/" onClick={handleLogout}>Logout</Link></DropdownMenuItem>
+              {/* gerar futura paginas */}
+              {/* <DropdownMenuItem><Link href={"/settings"}>Configurações</Link></DropdownMenuItem> */}
+              <DropdownMenuItem><Link href="/" onClick={handleLogout}>Sair</Link></DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>

@@ -46,7 +46,7 @@ export const useSingIn = () => {
       }
     } finally {
       setIsLoading(false)
-      router.push('/dashboard')
+      router.push('/clientes')
     }
   }
 

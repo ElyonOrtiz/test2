@@ -43,7 +43,11 @@ export class SingInController {
       }
      
     } catch (error){
-      res.status(StatusCodes.BAD_REQUEST).send(error)
+      res.status(StatusCodes.UNAUTHORIZED).json({
+        errors: {
+          default: error
+        }
+      })
     }
   }
 }

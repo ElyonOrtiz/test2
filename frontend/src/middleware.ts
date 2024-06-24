@@ -11,11 +11,11 @@ export default function middleware (request: NextRequest){
   }
 
   if (request.nextUrl.pathname === '/'){
-    return NextResponse.redirect(new URL('/dashboard', request.url))
+    return NextResponse.redirect(new URL('/clientes', request.url))
   }
 
 }
 
 export const config = {
-  matcher:['/', '/dashboard/:path*', '/settings/:path*']
+  matcher:['/', '/clientes/:path*', '/settings/:path*']
 }
