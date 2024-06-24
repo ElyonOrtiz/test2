@@ -4,15 +4,6 @@ import { CircleUser, Menu, Package2, Search } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
-import { Checkbox } from "@/components/ui/checkbox"
-import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
@@ -21,16 +12,21 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { Logout } from "@/function"
+import Cookies from "js-cookie"
+import { useRouter } from "next/navigation"
 
 export default function Layout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-    const handleLogout = () => {
-    Logout();
-  };
+   const router = useRouter()
+
+  const handleLogout = () => {
+    Cookies.remove("access_token")
+    console.log("Logout")
+    router.push("/")
+  }
   return (
     <div className="flex h-full w-full flex-col">
       <header className="sticky top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6">
