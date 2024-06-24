@@ -1,27 +1,45 @@
-###  APP registro de Clientes
+# App Registro de Clientes
 
-Esse é um app completo com tudo que pede o sistema proposto, o sistema está completamente dockerizado basta apenas ter o Doceker >=26.1.3 e Docker Compose instalado em sua máquina. após a instalação deles, basta executar 
+Este é um aplicativo completo que implementa todas as funcionalidades propostas no sistema. O sistema está completamente dockerizado, permitindo uma configuração rápida e fácil.
 
-docker compose  up --build
+## Requisitos
 
-Esse comando baixará todas as dependecias do projeto e configurará todo sistema de desenvolvimento automaticamente.
-no seu terminal será mostrado os Logs fique atento pois o container client mostrará onde sua aplicação foi iniciada:
+- Docker >= 26.1.3
+- Docker Compose
 
-exemplo:
+## Instalação e Configuração
+
+Após instalar Docker e Docker Compose, execute o seguinte comando no terminal para configurar o sistema:
+
+```sh
+docker compose up --build
+```
+
+Este comando baixará todas as dependências do projeto e configurará automaticamente o ambiente de desenvolvimento. Banco, server e client, o código conta com seeds e configuração automática do banco. Os logs serão exibidos no terminal; fique atento ao container client, que indicará onde sua aplicação foi iniciada. Por exemplo:
+
+Log Example
 ![alt text](readme2024-06-24_11-25.png)
 
-A imagem acmia mostra onde é gerado o log da url da aplicação
-Para acessar o sistema é necessário entrar com:
+## Acesso ao Sistema
 
-    email:
-    admin@admin.com
-    senha:
-    admin
+Para acessar o sistema, utilize as seguintes credenciais:
 
-Apenas a rota de singin não possui verificação de autenticação as demais rotas do crud precisam de um token de acesso retornado pelo própio singin
+- **Email:** admin@admin.com
+- **Senha:** admin
 
+Apenas a rota de login (signin) não requer autenticação. As demais rotas do CRUD exigem um token de acesso retornado pelo próprio signin.
 
-O projeto foi dividido em client e sever, o Banco é um container mysql. A parte client foi construida com next14, e o server em nodejs com Prisma ORM. tanto server quando no client foi ultilizado typescript.
+## Estrutura do Projeto
 
-a biblioteca ui de frontend ultilizado foi o shadcn ui. 
+O projeto está dividido em duas partes: `client` e `server`. O banco de dados é um container MySQL. Aqui estão mais detalhes sobre cada parte:
+
+- **Client:** Desenvolvido com Next.js 14, utilizando TypeScript.
+- **Server:** Desenvolvido com Node.js e Prisma ORM, também utilizando TypeScript.
+
+## Tecnologias Utilizadas
+
+- **Frontend:** Shadcn UI para componentes de interface.
+- **Backend:** Node.js, Prisma ORM
+- **Database:** MySQL (em container Docker)
+
 
